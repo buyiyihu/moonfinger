@@ -64,7 +64,7 @@ class communicate:
             raise RuntimeError(
                 "Noncompliant parameters for the method, only key-word-only and var-keyword supported. Put a * before all parameters and after cls"
             )
-        if "{" not in self.path:
+        if not self.path_param:
             self._path = self.path
 
         @wraps(func)
@@ -72,11 +72,10 @@ class communicate:
             if "response" in kwargs or "responses" in kwargs:
                 raise RuntimeError("You cannot pass in response(s) manually")
             service = args[0]
-            if self._path is None:
+            if self.path_param:
                 _params = {
                     key: kwargs.get(key)
                     for key in self.path_param
-                    if kwargs.get(key) is not None
                 }
                 self._path = self.path.format(**_params)
             url = service.SCHEME + "://" + service.ADDRESS + self._path
@@ -85,6 +84,7 @@ class communicate:
             params = _kwargs
             if self.params or params:
                 params.update(self.params) if self.params else params
+                # FIXME: key-word-only parameters will be lost
             if self.data or data:
                 data.update(self.data) if self.data else data
             else:

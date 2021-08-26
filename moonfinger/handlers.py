@@ -1,5 +1,6 @@
 
 
+# TODO: For cookie based authorization, request have to be prepared afresh, implement it here
 class Handlers:
     """
     A handler class for exceptional scenarios.
