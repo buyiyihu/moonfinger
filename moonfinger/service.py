@@ -16,16 +16,15 @@ class RPCMeta(type):
         if "cookies" not in attrs:
             self.cookies = None
         if "headers" not in attrs:
-            self.headers = None
+            self.headers = {}
         if "handlers" not in attrs:
             self.handlers = Handlers()
         super().__init__(*args, **kwargs)
 
 
 class RPCService(metaclass=RPCMeta):
-    """The base class for RPC service classes, all sercive class should inherit
+    """The base class for RPC service classes, all service classes should inherit
     it."""
 
     pass
-
 

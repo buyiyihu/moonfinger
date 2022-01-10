@@ -16,8 +16,8 @@ class Handlers:
             - service: the Service class
             - request: the just-sent requests.Request instance
             - prepared: the requests.PreparedRequest instance from the request instance above
-            - communicator: the communicate isntance
-        Accept the parameters you need explictly, add a **kwargs if the rest are not needed.
+            - communicator: the communicate instance
+        Accept the parameters you need explicitly, add a `**kwargs` if the rest are not needed.
         Please note: all the parameters have to be keyword-only.
 
         ...
