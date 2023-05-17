@@ -3,7 +3,7 @@ from .handlers import Handlers
 
 
 class RPCMeta(type):
-    """The metaclass for RPC service class, implement same check."""
+    """The metaclass for RPC service class, implement some checks and defaults."""
 
     def __init__(self, *args, **kwargs):
         attrs = args[2]
